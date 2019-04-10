@@ -1,0 +1,69 @@
+<form #searchForm="ngForm" class="example-form" (ngSubmit)="search()">
+  <i class="material-icons">search</i>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Razón social o número de tienda" [(ngModel)]="keyword.name" name="name">
+  </mat-form-field>
+  <button mat-raised-button color="warn" type="submit">Buscar</button>
+</form>
+<ngx-spinner></ngx-spinner>
+<div style="width: 45%; float:left;">
+  <div class="stats-card" *ngIf="shop">
+    <mat-card style="width: 90%; background: #fff;">
+      <p>Tienda 3 Hermanos</p>
+      <div *ngFor="let shop of shop">
+        <form #historyForm="ngForm" class="example-form" (ngSubmit)="seeHistory(shop._id)">
+          <p>Número de la tienda: {{shop.shop_number}}</p>
+          <p>Nombre de la tienda: {{shop.name}}</p>
+          <p>Dirección de la tienda: {{shop.address}}</p>
+          <!-- <button mat-raised-button color="primary" type="submit"> Ver todos los reportes</button> -->
+          <button mat-raised-button color="warn" type="submit"> Ver último reporte</button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="stats-card" *ngIf="report">
+    <mat-card style="width: 90%; background: #fff;">
+      <div *ngFor="let report of report.report">
+        <p> Supervisor: {{report.user.nick}} </p>
+        <div style="padding-left: 20px;">
+          <p> Fecha de supervisión: {{ report.created_at}}</p>
+          <p> Hora de supervisión: {{report.time}} </p>
+          <strong>
+            <p> Calificación: {{report.score.toFixed(2)}} </p>
+          </strong>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div style="width: 55%; float:left;" *ngIf="report">
+  <mat-card>
+    <div *ngFor="let i of report.report">
+      <div *ngFor="let areas of i.areas">
+        <strong>
+          <p>{{areas.name}}</p>
+        </strong>
+        <div *ngFor="let aspects of areas.aspects" style="padding-left: 30px;">
+          <p class="warn">
+            - {{aspects.name}}
+          </p>
+          <div style="padding-left: 20px;">
+            <p>
+              Calificación: {{aspects.score}}
+            </p>
+            <p>
+              Comentario: {{aspects.comment}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list> -->
