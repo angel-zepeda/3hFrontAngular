@@ -34,7 +34,7 @@ export class HistoryComponent implements OnInit {
       .subscribe(res => {
         this.spinner.hide();
         this.report = res;
-        console.log(this.report);
+        console.log(res.report);
       }, err => {
         console.log(<any>err);
       })
@@ -43,14 +43,20 @@ export class HistoryComponent implements OnInit {
 
   search() {
     this.spinner.show()
-    this.historyService.search(this.keyword)
+    if (this.keyword.name == '') {
+      this.spinner.hide(); alert("Busca un tienda");
+    } else {
+      this.historyService.search(this.keyword)
       .subscribe(res => {
         this.spinner.hide();
         this.shop = res.shops;
+        this.report = null;
         console.log(this.shop);
       }, err => {
         console.log(<any>err)
       })
+    }
+    
   }
 
 }

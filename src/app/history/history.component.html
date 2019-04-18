@@ -37,6 +37,7 @@
     </mat-card>
   </div>
 </div>
+
 <div style="width: 55%; float:left;" *ngIf="report">
   <mat-card>
     <div *ngFor="let i of report.report">
@@ -58,12 +59,21 @@
           </div>
         </div>
       </div>
+      <hr>   
+      <div>
+          <mat-card>
+            <strong>Evidencias fotograficas</strong>
+            <div *ngFor="let img of i.photos">
+                <img src="http://157.230.81.230:5000/{{img}}" width="40%" height="23%">
+            </div>
+          </mat-card>
+      </div>
+      <div align="center">
+          <mat-card>
+            <strong>Firma del supervisor</strong>
+            <img src="http://157.230.81.230:5000/{{i.signature}}" width="40%" height="23%">
+          </mat-card>
+        </div>
     </div>
   </mat-card>
 </div>
-<!-- <mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-  </mat-grid-list> -->

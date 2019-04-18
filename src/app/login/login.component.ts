@@ -27,9 +27,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   login() {
     this.spinner.show();
@@ -45,7 +43,7 @@ export class LoginComponent implements OnInit {
             })
         }
       }, err => {
-        console.log("")
+        console.log(<any> err);
       }
       )
   }
