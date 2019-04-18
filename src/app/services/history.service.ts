@@ -15,7 +15,7 @@ export class HistoryService {
   seeHistory(shop_number): Observable<any> {
     let params = shop_number;
     let headers = new HttpHeaders({ 'Content-type': 'application/json' });
-    return this.http.post(this.url + 'history/reports/by-shop', params, { headers: headers });
+    return this.http.post(this.url + 'history/report/by-shop/last', params, { headers: headers });
   }
 
   search(keyword): Observable<any> { // reports by shop all
