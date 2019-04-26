@@ -1,7 +1,9 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body {
-  background:#eee;
+  background-size:cover; width:auto;
+  background-image:url('http://hostingwebmex.com/z3h/background.jpg');
+  background-repeat: no-repeat;
 }
 
 .bg-3h {

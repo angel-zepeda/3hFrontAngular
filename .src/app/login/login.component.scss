@@ -1,0 +1,128 @@
+
+
+.background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  background-size:cover; width:auto;
+  background-image:url('http://hostingwebmex.com/z3h/background.jpg');
+  background-position:50% 50%;
+}
+
+input{
+
+  width: 91%;
+  height: 53px;
+  border-radius: 20px !important;
+  font-size: 17px !important;
+  padding: 0px 16px 0px 16px !important;
+  color: #717171 !important;
+ 
+
+}
+
+.mat-card-title {
+  font-size: 23px !important;
+}
+
+.mat-form-field {
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 2.125 !important;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}
+
+.ng-star-inserted{
+  padding-left: 16px !important;
+  margin-top: 10px !important;
+
+}
+
+.center {
+  width: 30%;
+  margin:20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+
+.cardCenter {
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  align-items: center;
+}
+.example-card {
+  background:none;
+  padding: 30px;
+  width: 30%;
+  
+}
+.example-full-width {
+  width: 100%;
+}
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.mat-card {
+
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.mat-card-header{
+  justify-content: center !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.mat-card-title{
+
+  font-weight: bold;
+
+}
+
+.mat-card-subtitle{
+
+  color: rgba(255, 255, 255, 0.87) !important;
+  font-size: 17px;
+  text-align: center !important;
+
+
+}
+
+input[_ngcontent-c2] {
+  width: 91%;
+  height: 53px;
+  border-radius: 20px !important;
+  font-size: 17px !important;
+  padding: 0px 16px 0px 16px !important;
+  color: #717171 !important;
+}
+
+.mat-form-field-infix {
+  padding: 0px 0;
+  border-top: 0px solid transparent;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: rgba(255, 255, 255, 0.54) !important;
+}
+

@@ -1,0 +1,87 @@
+<div class="background">
+</div>
+
+<form #searchForm="ngForm" class="example-form" (ngSubmit)="search()">
+  <i class="material-icons">search</i>
+  <mat-form-field class="example-full-width">
+    <input placeholder="Razón social o número de tienda" [(ngModel)]="keyword.name" name="name">
+  </mat-form-field>
+  <button mat-raised-button color="warn" type="submit">Buscar</button>
+</form>
+<ngx-spinner></ngx-spinner>
+<div style="width: 45%; float:left;">
+  <div class="stats-card" *ngIf="shop">
+    <mat-card style="width: 90%; background: #fff;">
+      <p>Tienda 3 Hermanos</p>
+      <div *ngFor="let shop of shop">
+        <form #historyForm="ngForm" class="example-form" (ngSubmit)="seeHistory(shop._id)">
+          <p><b>Número de la tienda:</b> {{shop.shop_number}}</p>
+          <p><b>Nombre de la tienda:</b> {{shop.name}}</p>
+          <p><b>Dirección de la tienda:</b> {{shop.address}}</p>
+          <!-- <button mat-raised-button color="primary" type="submit"> Ver todos los reportes</button> -->
+          <button mat-raised-button color="warn" type="submit"> Ver último reporte</button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="stats-card" *ngIf="report">
+    <mat-card style="width: 90%; background: #fff;">
+      <div *ngFor="let report of report.report">
+        <p> <b>Supervisor:</b> {{report.user.nick}} </p>
+        <div style="padding-left: 20px;">
+          <p><b> Fecha de supervisión:</b> {{ report.created_at}}</p>
+          <p> <b>Hora de supervisión:</b> {{report.time}} </p>
+          <strong>
+            <p><b> Calificación:</b> {{report.score.toFixed(2)}} </p>
+          </strong>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div style="width: 55%; float:left;" *ngIf="report">
+  <mat-card>
+    <div *ngFor="let i of report.report">
+      <div *ngFor="let areas of i.areas">
+        <strong>
+          <p class="title-area">{{areas.name}}</p>
+        </strong>
+        <div *ngFor="let aspects of areas.aspects" style="padding-left: 30px;">
+          <p class="warn">
+            - {{aspects.name}}
+          </p>
+          <div style="padding-left: 20px;">
+            <p style="color: black !important;">
+              Calificación: {{aspects.score}}
+            </p>
+            <p>
+              Comentario: {{aspects.comment}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div align="center">
+        <strong>Evidencias fotográficas</strong>
+      </div>
+      <div *ngFor="let photos of i.photos">
+        <img src="http://157.230.81.230:5000/{{photos}}" alt="No se pudo mostrar la foto" width="50%" height="320px"
+          style="border-radius: 5px;">
+      </div>
+      <hr>
+      <div align="center">
+        <strong>Firma de supervisor</strong>
+      </div>
+      <div align="center">
+        <img src="http://157.230.81.230:5000/{{i.signature}}" alt="">
+      </div>
+    </div>
+  </mat-card>
+</div>
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list> -->

@@ -15,30 +15,28 @@ export class HistoryComponent implements OnInit {
   keyword = { "name": "" }
   shop_id = { "shop_id": "" }
 
-
-
   constructor(
     private historyService: HistoryService,
     private spinner: NgxSpinnerService
-  ) {
+  ) { }
 
-  }
+  ngOnInit() { }
 
-  ngOnInit() {
-
-  }
   seeHistory(shop_number) {
     this.spinner.show();
     this.shop_id.shop_id = "" + shop_number;
     this.historyService.seeHistory(this.shop_id)
       .subscribe(res => {
+        console.log(res);
+
         this.spinner.hide();
-        this.report = res;
-        console.log(res.report);
+        // this.report = res;
+        // console.log("history" + res.report);
+        // console.log("history" + this.report);
       }, err => {
-        console.log(<any>err);
-      })
-    console.log(this.shop_id);
+        console.error(err);
+      });
+
   }
 
   search() {
@@ -47,16 +45,16 @@ export class HistoryComponent implements OnInit {
       this.spinner.hide(); alert("Busca un tienda");
     } else {
       this.historyService.search(this.keyword)
-      .subscribe(res => {
-        this.spinner.hide();
-        this.shop = res.shops;
-        this.report = null;
-        console.log(this.shop);
-      }, err => {
-        console.log(<any>err)
-      })
+        .subscribe(res => {
+          this.spinner.hide();
+          this.shop = res.shops;
+          this.report = null;
+          console.log(this.shop);
+        }, err => {
+          console.log(<any>err)
+        })
     }
-    
+
   }
 
 }

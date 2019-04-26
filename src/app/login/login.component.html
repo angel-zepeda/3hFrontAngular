@@ -1,27 +1,28 @@
+<div style=" position:relative; width: 100%"> <img src="http://hostingwebmex.com/z3h/logo.png" class="center"></div>
 <div class="cardCenter">
   <mat-card class="example-card">
     <mat-card-header align="center">
-      <mat-card-title>Iniciar Sesión</mat-card-title>
+      <mat-card-title>BIENVENIDO</mat-card-title>
       <mat-card-subtitle>Supervisión 3H</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <div class="example-container">
         <form #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" type="email" name="email" #email="ngModel" [(ngModel)]="user.email"
-              required>
+          <div class="example-full-width" style="color:white !important">
+            <input placeholder="Email" type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required>
             <span *ngIf="!email.valid && email.touched">
               El campo es obligatorio
             </span>
-          </mat-form-field>
+          </div>
+
           <br>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Contraseña" type="password" name="password" #password="ngModel"
+          <div class="example-full-width">
+            <input placeholder="Contraseña" type="password" name="password" #password="ngModel"
               [(ngModel)]="user.password" required>
             <span *ngIf="!password.valid && password.touched">
               El campo es obligatorio
             </span>
-          </mat-form-field>
+          </div>
           <br>
           <div align="center">
             <button mat-raised-button color="warn" type="submit" [disabled]="!loginForm.form.valid">Iniciar

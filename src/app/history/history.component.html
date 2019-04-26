@@ -1,10 +1,12 @@
-<form #searchForm="ngForm" class="example-form" (ngSubmit)="search()">
-  <i class="material-icons">search</i>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Razón social o número de tienda" [(ngModel)]="keyword.name" name="name">
-  </mat-form-field>
-  <button mat-raised-button color="warn" type="submit">Buscar</button>
-</form>
+<mat-card style="width: 25%;">
+  <form #searchForm="ngForm" class="example-form" (ngSubmit)="search()">
+    <i class="material-icons">search</i>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Razón social o número de tienda" [(ngModel)]="keyword.name" name="name">
+    </mat-form-field>
+    <button mat-raised-button color="warn" type="submit">Buscar</button>
+  </form>
+</mat-card>
 <ngx-spinner></ngx-spinner>
 <div style="width: 45%; float:left;">
   <div class="stats-card" *ngIf="shop">
@@ -15,7 +17,6 @@
           <p>Número de la tienda: {{shop.shop_number}}</p>
           <p>Nombre de la tienda: {{shop.name}}</p>
           <p>Dirección de la tienda: {{shop.address}}</p>
-          <!-- <button mat-raised-button color="primary" type="submit"> Ver todos los reportes</button> -->
           <button mat-raised-button color="warn" type="submit"> Ver último reporte</button>
         </form>
       </div>

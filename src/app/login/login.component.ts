@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../services/login.service';
 import { Router } from "@angular/router";
 import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,6 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private spinner: NgxSpinnerService
-
   ) {
     this.user = {
       "email": "",
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.user)
       .subscribe(res => {
         this.spinner.hide();
-        if (res.message) console.log(res.message);
+        if (res.message) Swal.fire('Oops...', res.message, 'error');
         else {
           this.router.navigateByUrl('/history')
             .then((e) => {

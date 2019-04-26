@@ -1,0 +1,48 @@
+.mat-form-field {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  width: 230px !important;
+}
+
+.material-icons {
+  color: white !important;
+}
+
+.title-area{
+  font-size: 16px;
+  color: #f44336;
+  font-weight: bold !important;
+
+}
+
+.mat-card>:first-child {
+  font-size: 19px;
+  color: #f44336;
+  font-weight: bold !important;
+}
+
+button {
+  margin: 10px;
+}
+i { margin: 10px;}
+input { margin: 5px; width: 219px;
+  height: 31px;
+  border-radius: 5px;
+  padding-left: 9px;}
+
+.shop-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.stats-card {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  padding: 5px;  
+  width: 100%;
+}
