@@ -8,9 +8,9 @@
   </form>
 </mat-card>
 <ngx-spinner></ngx-spinner>
-<div style="width: 45%; float:left;">
+<div style="width: 50%; float:left;">
   <div class="stats-card" *ngIf="shop">
-    <mat-card style="width: 90%; background: #fff;">
+    <mat-card style="width: 90%;">
       <p>Tienda 3 Hermanos</p>
       <div *ngFor="let shop of shop">
         <form #historyForm="ngForm" class="example-form" (ngSubmit)="seeHistory(shop._id)">
@@ -22,10 +22,11 @@
       </div>
     </mat-card>
   </div>
-
+</div>
+<div style="width: 50%; float: right;">
   <div class="stats-card" *ngIf="report">
-    <mat-card style="width: 90%; background: #fff;">
-      <div *ngFor="let report of report.report">
+    <mat-card style="width: 90%;">
+      <div *ngFor="let report of report">
         <p> Supervisor: {{report.user.nick}} </p>
         <div style="padding-left: 20px;">
           <p> Fecha de supervisión: {{ report.created_at}}</p>
@@ -39,42 +40,57 @@
   </div>
 </div>
 
-<div style="width: 55%; float:left;" *ngIf="report">
+
+<div style="width: 55%; float:left; font-size: 0.8rem !important;" *ngIf="report">
   <mat-card>
-    <div *ngFor="let i of report.report">
+    <div *ngFor="let i of report">
       <div *ngFor="let areas of i.areas">
         <strong>
           <p>{{areas.name}}</p>
         </strong>
         <div *ngFor="let aspects of areas.aspects" style="padding-left: 30px;">
-          <p class="warn">
-            - {{aspects.name}}
+          <p class="warn aspect-cal">
+            {{aspects.name}}:
           </p>
-          <div style="padding-left: 20px;">
+          <p style="color: blue;">
+            Calificación: {{aspects.score}}
+          </p>
+          <p style="color: yellow; text-align: justify;" *ngIf="aspects.comment">
+            Calificación: {{aspects.comment}}
+          </p>
+          <!-- <div style="padding-left: 20px;">
             <p>
               Calificación: {{aspects.score}}
             </p>
             <p>
               Comentario: {{aspects.comment}}
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
-      <hr>   
+      <hr>
       <div>
-          <mat-card>
-            <strong>Evidencias fotograficas</strong>
-            <div *ngFor="let img of i.photos">
-                <img src="http://157.230.81.230:5000/{{img}}" width="40%" height="23%">
-            </div>
-          </mat-card>
+        <div align="center" style="margin: 20px;">
+          <strong>Evidencias fotograficas</strong>
+        </div>
+        <div *ngFor="let img of i.photos">
+          <ul style="list-style: none;">
+            <li style="display: inline-block;">
+              <img src="http://157.230.81.230:5000/{{img}}" width="30%" height="300px">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div align="center">
+        <strong>Firma del supervisor</strong>
       </div>
       <div align="center">
-          <mat-card>
-            <strong>Firma del supervisor</strong>
-            <img src="http://157.230.81.230:5000/{{i.signature}}" width="40%" height="23%">
-          </mat-card>
-        </div>
+        <img src="http://157.230.81.230:5000/{{i.signature}}" width="40%" height="23%" style="background: #fff;">
+      </div>
     </div>
+    <br>
   </mat-card>
 </div>

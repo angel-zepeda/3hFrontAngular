@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoryService } from '../services/history.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-history',
@@ -27,10 +28,18 @@ export class HistoryComponent implements OnInit {
     this.shop_id.shop_id = "" + shop_number;
     this.historyService.seeHistory(this.shop_id)
       .subscribe(res => {
-        console.log(res);
-
-        this.spinner.hide();
-        // this.report = res;
+        if (res.message) {
+          this.spinner.hide();
+          Swal.fire({
+            'title': 'Oops',
+            'text': res.message,
+            'type': 'error'
+          });
+        }else {
+          this.spinner.hide();
+          this.report = res;
+          console.log(this.report);
+        }
         // console.log("history" + res.report);
         // console.log("history" + this.report);
       }, err => {

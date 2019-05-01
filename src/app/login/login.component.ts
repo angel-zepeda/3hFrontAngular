@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.spinner.hide();
         if (res.message) Swal.fire('Oops...', res.message, 'error');
         else {
+          Swal.fire('Bienvenido!', ''+res.user.name, 'success');
           this.router.navigateByUrl('/history')
             .then((e) => {
               if (e) console.log("Navigation successfuly");

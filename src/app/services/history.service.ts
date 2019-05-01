@@ -10,6 +10,7 @@ export class HistoryService {
 
   constructor(public http: HttpClient) {
     this.url = GLOBAL.url;
+    // this.url = 'http://localhost:5000/';
   }
 
   seeHistory(shop_number): Observable<any> {
